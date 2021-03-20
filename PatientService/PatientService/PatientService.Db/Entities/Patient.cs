@@ -12,7 +12,6 @@ namespace PatientService.Db.Entities
         public string Name { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "0:MM-dd-yyyy")]
         public DateTime DayOfBirdth { get; set; }
         [Required]
         [EmailAddress]
