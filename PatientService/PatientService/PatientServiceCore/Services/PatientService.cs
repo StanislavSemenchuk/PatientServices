@@ -80,7 +80,7 @@ namespace PatientServiceCore.Services
                     patients = patients.OrderByDescending(p => p.Name);
                     break;
                 case "email":
-                    patients = patients.OrderBy(p => p.Name);
+                    patients = patients.OrderBy(p => p.Email);
                     break;
                 case "emailDesc":
                     patients = patients.OrderByDescending(p => p.Email);

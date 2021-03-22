@@ -10,6 +10,8 @@ namespace PatientServiceCore.Helpers
         {
             CreateMap<Patient, PatientDTO>();
             CreateMap<PatientDTO, Patient>();
+            CreateMap<Address, AddressDTO>();
+            CreateMap<AddressDTO, Address>();
         }
     }
 }
