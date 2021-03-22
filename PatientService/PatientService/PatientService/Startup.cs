@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PatientService.Db.Ef;
+using PatientServiceCore.Helpers;
 
 namespace PatientService
 {
@@ -26,6 +28,17 @@ namespace PatientService
             services.AddDbContext<ApplicationDbContext>(option =>
                 option.UseLazyLoadingProxies()
                       .UseSqlServer(connectionString));
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new Mappers());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddMvc();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

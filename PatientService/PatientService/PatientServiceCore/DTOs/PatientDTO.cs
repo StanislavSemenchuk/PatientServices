@@ -1,12 +1,12 @@
-﻿using System;
+﻿using PatientService.Db.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PatientService.Db.Entities
+namespace PatientServiceCore.DTOs
 {
-    public class Patient
+    public class PatientDTO
     {
-        [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
