@@ -1,16 +1,17 @@
-﻿using PatientService.Db.Entities;
+﻿using PatientServiceCore.DTOs;
+using PatientServiceCore.Helpers;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PatientServiceCore.IServices
 {
     public interface IIllnessService
     {
-        public Task<Illness> GetAll();
-        public Task<Illness> GetById(int id);
-        public Task<Illness> GetWithPaging(int page, int size);
-        public Task Add(Illness illness);
-        public Task Update(Illness illness);
-        public Task Delete(Illness illness);
-        public Task DeleteById(int id);
+        public Task<List<IllnessDTO>> GetAll();
+        public Task<IllnessDTO> GetById(int id);
+        public Task<PaginatedList<IllnessDTO>> GetWithPaging(int? page, int size, string sortOrder, string filter);
+        public Task Add(IllnessDTO illnessDto);
+        public Task Update(IllnessDTO illnessDto);
+        public Task Delete(int id);
     }
 }

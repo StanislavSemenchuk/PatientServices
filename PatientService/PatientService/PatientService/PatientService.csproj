@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PatientService.Db\PatientService.Db.csproj" />
     <ProjectReference Include="..\PatientServiceCore\PatientServiceCore.csproj" />
   </ItemGroup>

@@ -9,6 +9,7 @@ using PatientServiceCore.Helpers;
 using System;
 using AutoMapper;
 using PatientServiceCore.DTOs;
+using AutoMapper.QueryableExtensions;
 
 namespace PatientServiceCore.Services
 {
@@ -16,9 +17,10 @@ namespace PatientServiceCore.Services
     {
         private readonly ApplicationDbContext _db;
         private readonly IMapper _mapper;
-        public PatientService(ApplicationDbContext db)
+        public PatientService(ApplicationDbContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
         public async Task Add(PatientDTO patientDto)
@@ -59,14 +61,16 @@ namespace PatientServiceCore.Services
                                                             .Contains(filter));
             patients = OrderPatients(sortOrder, patients);
 
-            var paginatedList = await PaginatedList<PatientDTO>.CreateAsync(_mapper.Map<IQueryable<PatientDTO>>(patients.AsNoTracking()), page ?? 1, size);
+            IQueryable<PatientDTO> queryable = patients.ProjectTo<PatientDTO>(_mapper.ConfigurationProvider).AsQueryable();
+
+            var paginatedList = await PaginatedList<PatientDTO>.CreateAsync(queryable.AsNoTracking(), page ?? 1, size);
 
             return paginatedList ?? throw new NullReferenceException();
         }
 
-        public async Task Update(PatientDTO patientDto)
+        public async Task Update(int id, PatientDTO patientDto)
         {
-            var patient = await _db.Patients.SingleAsync(p => p.Id == patientDto.Id);
+            var patient = await _db.Patients.SingleAsync(p => p.Id == id);
             patient = _mapper.Map<Patient>(patientDto);
             _db.Patients.Update(patient);
             _db.SaveChanges();

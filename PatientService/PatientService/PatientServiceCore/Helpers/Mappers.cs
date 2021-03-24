@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PatientService.Db.Entities;
 using PatientServiceCore.DTOs;
+using System.Linq;
 
 namespace PatientServiceCore.Helpers
 {
@@ -12,6 +13,8 @@ namespace PatientServiceCore.Helpers
             CreateMap<PatientDTO, Patient>();
             CreateMap<Address, AddressDTO>();
             CreateMap<AddressDTO, Address>();
+            CreateMap<Illness, IllnessDTO>();
+            CreateMap<IllnessDTO, Illness>();
         }
     }
 }

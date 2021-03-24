@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PatientService.Db.Ef;
 using PatientServiceCore.Helpers;
+using PatientServiceCore.IServices;
 
 namespace PatientService
 {
@@ -36,6 +37,8 @@ namespace PatientService
 
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            services.AddScoped<IPatientService, PatientServiceCore.Services.PatientService>();
 
             services.AddMvc();
 

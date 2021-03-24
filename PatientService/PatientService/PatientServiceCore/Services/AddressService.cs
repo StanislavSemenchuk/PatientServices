@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using PatientService.Db.Ef;
 using PatientService.Db.Entities;
@@ -58,7 +59,9 @@ namespace PatientServiceCore.Services
 
             addresses = OrderAddress(sortOrder, addresses);
 
-            var paginatedList = await PaginatedList<AddressDTO>.CreateAsync(_mapper.Map<IQueryable<AddressDTO>>(addresses.AsNoTracking()), page ?? 1, size);
+            IQueryable<AddressDTO> queryable = addresses.ProjectTo<AddressDTO>(_mapper.ConfigurationProvider).AsQueryable();
+
+            var paginatedList = await PaginatedList<AddressDTO>.CreateAsync(queryable.AsNoTracking(), page ?? 1, size);
 
             return paginatedList ?? throw new NullReferenceException();
         }
