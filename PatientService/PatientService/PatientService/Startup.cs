@@ -39,6 +39,8 @@ namespace PatientService
             services.AddSingleton(mapper);
 
             services.AddScoped<IPatientService, PatientServiceCore.Services.PatientService>();
+            services.AddScoped<IIllnessService, PatientServiceCore.Services.IllnessService>();
+
 
             services.AddMvc();
 
