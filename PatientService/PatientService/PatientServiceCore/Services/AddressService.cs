@@ -66,9 +66,9 @@ namespace PatientServiceCore.Services
             return paginatedList ?? throw new NullReferenceException();
         }
 
-        public async Task Update(AddressDTO addressDto)
+        public async Task Update(int id, AddressDTO addressDto)
         {
-            var address = await _db.Addresses.SingleOrDefaultAsync(a => a.Id == addressDto.Id);
+            var address = await _db.Addresses.SingleOrDefaultAsync(a => a.Id == id);
             address = _mapper.Map<Address>(addressDto);
             _db.Addresses.Update(address);
             _db.SaveChanges();

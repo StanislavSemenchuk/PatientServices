@@ -11,7 +11,7 @@ namespace PatientServiceCore.IServices
         public Task<AddressDTO> GetById(int id);
         public Task<PaginatedList<AddressDTO>> GetWithPaging(int? page, int size, string sotrOrder, string filter);
         public Task Add(AddressDTO addressDto);
-        public Task Update(AddressDTO addressDto);
+        public Task Update(int id, AddressDTO addressDto);
         public Task Delete(int id);
     }
 }

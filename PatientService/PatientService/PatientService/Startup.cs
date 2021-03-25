@@ -40,7 +40,7 @@ namespace PatientService
 
             services.AddScoped<IPatientService, PatientServiceCore.Services.PatientService>();
             services.AddScoped<IIllnessService, PatientServiceCore.Services.IllnessService>();
-
+            services.AddScoped<IAddressService, PatientServiceCore.Services.AddressService>();
 
             services.AddMvc();
 
