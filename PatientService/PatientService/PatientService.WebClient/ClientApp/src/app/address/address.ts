@@ -1,4 +1,4 @@
-﻿import {Patient} from "../patient/Patient";
+﻿import {Patient} from '../patient/Patient';
 
 export class Address {
   constructor(

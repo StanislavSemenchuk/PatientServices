@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\address\Address.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\illness\Illness.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\patient\Patient.ts" />
   </ItemGroup>
 
