@@ -10,7 +10,7 @@ export class Patient {
     public dayOfBirdth?: DateTimeFormat,
     public email?: string,
     public phoneNumber?: string,
-    public addresses?: Address[],
-    public illnesses?: Illness[]
+    public addresses?: Array<Address>,
+    public illnesses?: Array<Illness>
   ) {}
 }

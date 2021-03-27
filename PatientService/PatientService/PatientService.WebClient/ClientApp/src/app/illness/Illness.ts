@@ -5,7 +5,7 @@ export class Illness {
     public  id?: number,
     public  illName?: string,
     public illType?: illnessType,
-    public patients?: Patient[]
+    public patients?: Array<Patient>
   ) {}
 }
 
