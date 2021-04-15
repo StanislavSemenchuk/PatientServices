@@ -1,5 +1,4 @@
-﻿using PatientService.Db.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -20,7 +19,7 @@ namespace PatientServiceCore.DTOs
         [Phone]
         public string PhoneNumber { get; set; }
         [Required]
-        public virtual List<Address> Addresses { get; set; }
-        public virtual List<Illness> Illnesses { get; set; }
+        public virtual List<AddressDTO> Addresses { get; set; }
+        public virtual List<IllnessDTO> Illnesses { get; set; }
     }
 }

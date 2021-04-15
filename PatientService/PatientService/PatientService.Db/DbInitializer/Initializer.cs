@@ -30,7 +30,14 @@ namespace PatientService.Db.DbInitializer
                 new Patient{ Name = "Patient-6", Email = "patient6@example.com", PhoneNumber="010101016", DayOfBirdth = new DateTime(2000, 6, 6)}
             };
 
+            var illnesses = new List<Illness>
+            {
+                new Illness{IllName = "Flu", Type = IllnessType.ColdOrFlu },
+                new Illness{IllName = "Cold", Type = IllnessType.ColdOrFlu }
+            };
+
             _db.Patients.AddRange(patients);
+            _db.Illnesses.AddRange(illnesses);
             _db.SaveChanges();
         }
     }

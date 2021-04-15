@@ -11,6 +11,6 @@ namespace PatientServiceCore.DTOs
         public string IllName { get; set; }
         [Required]
         public IllnessType Type { get; set; }
-        public virtual List<Patient> Patients { get; set; }
+        public virtual List<int> PatientsIds { get; set; }
     }
 }

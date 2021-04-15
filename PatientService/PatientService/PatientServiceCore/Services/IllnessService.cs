@@ -57,9 +57,11 @@ namespace PatientServiceCore.Services
 
             illnesses = OrderIllness(sortOrder, illnesses);
 
-            IQueryable<IllnessDTO> queryable = illnesses.ProjectTo<IllnessDTO>(_mapper.ConfigurationProvider).AsQueryable();
+            //IQueryable<IllnessDTO> queryable = illnesses.ProjectTo<IllnessDTO>(_mapper.ConfigurationProvider).AsSingleQuery().AsNoTracking();
+            var result = _mapper.Map<List<Illness>, List<IllnessDTO>>(await illnesses.ToListAsync());
+            var queryResult = result.AsQueryable().AsNoTracking();
 
-            var paginatedList = await PaginatedList<IllnessDTO>.CreateAsync(queryable.AsNoTracking(), page ?? 1, size);
+            var paginatedList = PaginatedList<IllnessDTO>.Create(queryResult, page ?? 1, size);
 
             return paginatedList ?? throw new NullReferenceException();
         }

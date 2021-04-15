@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using PatientService.Db.Entities;
 using PatientServiceCore.DTOs;
-using System.Linq;
+using PatientServiceCore.Helpers.ValueResolvers;
 
 namespace PatientServiceCore.Helpers
 {
@@ -13,7 +13,10 @@ namespace PatientServiceCore.Helpers
             CreateMap<PatientDTO, Patient>();
             CreateMap<Address, AddressDTO>();
             CreateMap<AddressDTO, Address>();
-            CreateMap<Illness, IllnessDTO>();
+
+            CreateMap<Illness, IllnessDTO>()
+                .ForMember(d => d.PatientsIds, o => o.MapFrom<IllnessesResolver>());
+
             CreateMap<IllnessDTO, Illness>();
         }
     }
